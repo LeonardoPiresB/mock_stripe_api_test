@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyString
+  preco_unitario: 
+  quantidade: 1
+
+two:
+  descricao: MyString
+  preco_unitario: 
+  quantidade: 1

@@ -1,0 +1,10 @@
+<h1>Produto Pago: <%= @produto.descricao %></h1>
+<ul>
+	<%
+	valor = 0
+    valor = @produto.preco_unitario * @produto.quantidade
+	%>
+	<li>Preço Unitário: R$ <%= @produto.preco_unitario %></li>
+	<li>Quantidade: <%= @produto.quantidade %></li>
+	<li>Total pago: R$ <%= valor.round(2) %></li>
+</ul>

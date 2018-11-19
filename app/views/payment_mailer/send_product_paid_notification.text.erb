@@ -1,0 +1,9 @@
+Produto Pago: <%= @produto.descricao %>
+=======================================================
+<%
+valor = 0
+valor = @produto.preco_unitario * @produto.quantidade
+%>
+- Preço Unitário: R$ <%= @produto.preco_unitario %>
+- Quantidade: <%= @produto.quantidade %>
+- Total pago: R$ <%= valor.round(2) %>

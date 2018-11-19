@@ -1,0 +1,57 @@
+<style type="text/css">
+	.pago {
+		color: green;
+	}
+</style>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @produto.descricao %>
+</p>
+
+<p>
+  <strong>Preco unitario:</strong>
+  <%= @produto.preco_unitario %>
+</p>
+
+<p>
+  <strong>Quantidade:</strong>
+  <%= @produto.quantidade %>
+</p>
+<%#= link_to 'Pay', pay_produto_path(@produto), method: :post %> 
+<%
+valor = 0
+valor = @produto.preco_unitario * @produto.quantidade if @produto.preco_unitario and @produto.quantidade
+valor *= 100
+#Valor passado é em centavos
+%>
+<table>
+	<tr>
+		<td>
+			<%# @produto.esta_pago = false %>
+			<% unless @produto.esta_pago %>
+			<%= form_tag pay_produto_path(@produto), method: :post do %>
+				<script
+					src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+					data-key="pk_test_vQXTAUEzZxRqZH0JUIWtDWMo"
+					data-amount="<%= valor.to_i %>"
+					data-name="Demo Site"
+					data-description="Example charge"
+					data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+					data-locale="auto">
+				</script>
+			<% end %>
+			<% else %>
+				<b class="pago">Pago</b>
+			<% end %>
+		</td>
+		<td>
+			<%= link_to 'Edit', edit_produto_path(@produto) %>
+		</td>
+		<td>
+			<%= link_to 'Back', produtos_path %>
+		</td>
+	</tr>
+</table>
+

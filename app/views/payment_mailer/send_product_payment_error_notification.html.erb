@@ -1,0 +1,12 @@
+<h1>Produto NÃO pode ser Pago: <%= @produto.descricao %></h1>
+<ul>
+	<%
+	valor = 0
+	valor = @produto.preco_unitario * @produto.quantidade
+	%>
+	<li>Preço Unitário: R$ <%= @produto.preco_unitario %></li>
+	<li>Quantidade: <%= @produto.quantidade %></li>
+	<li>Valor Total: R$ <%= valor.round(2) %></li>	
+</ul>
+<hr>
+<b>Motivo: </b><%= @exception.inspect %>

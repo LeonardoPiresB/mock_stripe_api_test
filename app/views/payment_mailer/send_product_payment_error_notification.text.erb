@@ -1,0 +1,13 @@
+Produto NÃO pode ser Pago: <%= @produto.descricao %>
+===============================================================
+
+<%
+valor = 0
+valor = @produto.preco_unitario * @produto.quantidade
+%>
+- Preço Unitário: R$ <%= @produto.preco_unitario %>
+- Quantidade: <%= @produto.quantidade %>
+- Valor Total: R$ <%= valor.round(2) %>
+_______________________________________________________________
+
+>> Motivo: <%= @exception.inspect %>
