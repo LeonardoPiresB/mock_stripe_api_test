@@ -63,8 +63,12 @@ class ProdutosController < ApplicationController
         format.json { render :show, location: @produto }
       end
     else
-      PaymentMailer.with(produto: @produto, stripe_exception: p.get_last_error, email: customer_info_map["email"])
-        .send_product_payment_error_notification.deliver_later
+      last_error = p.get_last_error
+      PaymentMailer.with(
+        produto: @produto, 
+        stripe_exception: "#{last_error.class}: #{last_error.message}", 
+        email: customer_info_map["email"]
+      ).send_product_payment_error_notification.deliver_later
       respond_to do |format|
         format.html { redirect_to @produto, notice: 'Produto cannot be paid.' }
         format.json { render :show, location: @produto }

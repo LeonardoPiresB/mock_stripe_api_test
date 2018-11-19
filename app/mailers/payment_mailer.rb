@@ -8,7 +8,7 @@ class PaymentMailer < ApplicationMailer
 
 	def send_product_payment_error_notification
 		@produto = params[:produto]
-		@exception = params[:stripe_exception]
+		@exception_message = params[:stripe_exception]
 		mail to: params[:email], subject: "Alerta de NÃO pagamento de Produto"
 	end
 end
